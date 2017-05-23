@@ -29,11 +29,11 @@ sleep 2s
 echo -en "\007"
 echo -en "\007" > /dev/console
 
-#read
+read
 
-#if curl -s http://home.mcbyte.net:5280/http-bind | grep -q "It works" ; then
-#   echo "Build $IMG_NAME is OK"
-#   docker tag $IMG_NAME $IMG_BASE_NAME:latest
-#   docker push $IMG_BASE_NAME
-#fi
+if echo quit | nc 192.168.1.11 587 | grep -q "ESMTP OpenSMTPD" ; then
+   echo "Build $IMG_NAME is OK"
+   docker tag $IMG_NAME $IMG_BASE_NAME:latest
+   docker push $IMG_BASE_NAME
+fi
 
