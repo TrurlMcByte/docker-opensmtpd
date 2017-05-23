@@ -10,8 +10,8 @@ VOLUME ["/etc/smtpd", "/var/vmail", "/var/spool/smtpd/"]
 
 EXPOSE 25 587
 
-HEALTHCHECK --interval=3m --timeout=3s \
-  CMD /bin/echo QUIT | /usr/bin/nc -w 2 -i 1 localhost 587 | /bin/grep -q 'ESMTP OpenSMTPD' || exit 1
+# HEALTHCHECK --interval=3m --timeout=3s \
+#  CMD /bin/echo QUIT | /usr/bin/nc -w 2 -i 1 localhost 587 | /bin/grep -q "ESMTP OpenSMTPD" || exit 1
 
 ENTRYPOINT ["/entrypoint.sh"]
 
